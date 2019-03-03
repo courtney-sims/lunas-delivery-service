@@ -3,7 +3,7 @@ import unittest
 from game_map import GameMap
 from scene import Scene
 from deliveryoffice import DeliveryOffice
-from traffic import Traffic
+from bistro import Bistro
 
 
 class MapTests (unittest.TestCase):
@@ -13,16 +13,16 @@ class MapTests (unittest.TestCase):
 
     def test_next_scene_success(self):
         test_map = GameMap()
-        test_deliveryoffice = DeliveryOffice
-        next_scene = test_map.next_scene(test_deliveryoffice, 1)
-        self.assertEqual(next_scene, Traffic)
+        opening_scene = test_map.opening_scene()
+        next_scene = test_map.next_scene(opening_scene, 1)
+        self.assertIsInstance(next_scene, Scene)
 
     def test_next_scene_failure(self):
         test_map = GameMap()
 
         with self.assertRaises(IndexError):
-            test_deliveryoffice = DeliveryOffice
-            test_map.next_scene(test_deliveryoffice, 5)
+            opening_scene = test_map.opening_scene()
+            test_map.next_scene(opening_scene, 100)
 
         with self.assertRaises(KeyError):
             test_map.next_scene(test_map, 1)
@@ -30,7 +30,7 @@ class MapTests (unittest.TestCase):
     def test_opening_scene(self):
         my_map = GameMap()
         opening_scene = my_map.opening_scene()
-        self.assertTrue(issubclass(opening_scene, Scene))
+        self.assertIsInstance(opening_scene, Scene)
 
     def tearDown(self):
         pass
