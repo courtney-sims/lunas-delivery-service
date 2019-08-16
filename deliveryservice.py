@@ -1,24 +1,34 @@
-from game_map import GameMap
+from deliveryoffice import DeliveryOffice
 
 
 class DeliveryService:
 
-    def __init__(self, scene_mapping):
-        self.scene_mapping = scene_mapping
+    def __init__(self):
+        self.aurora_hunger = True
 
-    def play(self):
-        play_scene = self.scene_mapping.opening_scene()
+    def play(self, current_scene):
         game_continues = True
 
         while game_continues:
-            play_scene.display_scene()
+            current_scene = current_scene()
+            current_scene.display_scene()
+            current_scene.display_choices()
+
             choice = int(input("Please provide a number"))
-            play_scene = self.scene_mapping.next_scene(play_scene, choice)
+
+            current_scene = current_scene.handle_choice(choice)
+
+            if current_scene is None:
+                game_continues = False
+
+    def feed_aurora(self):
+        self.aurora_hunger = False
 
 
-my_map = GameMap()
-my_game = DeliveryService(my_map)
-my_game.play()
+
+my_game = DeliveryService()
+opening_scene = DeliveryOffice
+my_game.play(opening_scene)
 
 
 
