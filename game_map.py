@@ -11,14 +11,14 @@ class GameMap:
     def __init__(self):
         self.delivery_office = DeliveryOffice()
         bistro = Bistro()
-        game_over = GameOver
+        game_over = GameOver()
 
         self.scene_map = {
             self.delivery_office: [
                 bistro,
                 game_over
             ],
-            #Bistro: [
+            #bistro: [
             #    Traffic(),
             #    GameOver()
             #],
