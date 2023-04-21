@@ -1,17 +1,21 @@
-class IntroScene:
+class IntroScene():
+    activate = {"Traffic": str()}
+
     def run(self):
         self.print_scene()
         self.print_options()
         choice = self.get_user_input()
         next_scene = self.get_next_scene(choice)
-        return next_scene
+        print(next_scene)
+#want to return an actual scene to go to next I think. maybe python the hard way has a good example for that
+#        return self.activate[next_scene]
 
     def get_next_scene(self, choice):
-        if choice == 1:
+        if choice == "1":
             return "Traffic"
-        elif choice == 2:
+        elif choice == "2":
             return "Bistro"
-        elif choice == 3:
+        elif choice == "3":
             return "GameOver"
         else:
             return "Invalid selection"
@@ -36,3 +40,7 @@ class IntroScene:
             'I had a takeaway order at the Bistro. I need to make . . . a DELIVERY.'
             . . . a delivery, you say?'
         """)
+
+if __name__ == '__main__':
+  intro = IntroScene()
+  intro.run()
