@@ -10,5 +10,11 @@ I'm starting over on this game with the knowledge I've learned since becoming a 
 - Luna is a pilot
 - Luna plays in the super bowl
 
-# Running
+# Setup
 1. Install the requirements file -- pip install -r requirements.txt
+
+# Testing
+- Unit Tests: python -m unittest test_introScene.py
+
+# Running
+python introScene.py
