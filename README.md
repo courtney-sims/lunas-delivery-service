@@ -9,3 +9,6 @@ I'm starting over on this game with the knowledge I've learned since becoming a 
 - Luna does Christmas
 - Luna is a pilot
 - Luna plays in the super bowl
+
+# Running
+1. Install the requirements file -- pip install -r requirements.txt
